@@ -1,0 +1,39 @@
+{
+    "name": "VulnScanner",
+    "version": "1.0",
+    "manifest_version": 2,
+    "description": "Procura por vulnerabilidades em um website",
+
+    "icons": {
+        "48": "icons/shield-48.png",
+        "96": "icons/shield-128.png"
+    },
+
+
+    "applications": {
+        "gecko": {
+            "id": "vulnscanner@mozilla.org"
+        }
+    },
+
+    "permissions": [
+        "http://*/*",
+        "https://*/*",
+        "tabs",
+        "cookies",
+        "<all_urls>"
+    ],
+     
+    "browser_action": {
+        "default_title": "VulnScanner",
+        "default_icon": "icons/shield-48.png",
+        "default_popup": "popup/tests_vuln.html"
+    },
+
+    "web_accessible_resources": [
+        "beasts/frog.jpg",
+        "beasts/turtle.jpg",
+        "beasts/snake.jpg"
+    ]
+}
+
