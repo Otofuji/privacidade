@@ -11,40 +11,42 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet"> 
 
-    <div class="panel">
-      <h1>Site</h1>
-      <p id="header-title"></p>
+    <div class="header-title">
+      <image src="/icons/shield-128.png" class="header-icon"/>
+      <h1 id="header-title">VulnScanner</h1>
     </div>
 
-    <div class="panel">
-      <h1>Conexões de Terceira Parte</h1>
-      <p></p>
+    <div class="content">
+      <div class="panel site">
+        <h2>Site</h2>
+        <p id="site-name"></p>
+      </div>
+
+      <div class="panel connect">
+        <h2>Conexões de Terceira Parte</h2>
+        <p></p>
+      </div>
+
+      <div class="panel ameac">
+        <h2>Ameaças de Sequestro de Navegador</h2>
+        <p></p>
+      </div>
+
+      <div class="panel local">
+        <h2>Local Storage</h2>
+        <p id="storage-stats"></p>
+      </div>
+
+      <div class="panel cookies">
+        <h2>Cookies</h2>
+        <p id="cookie-stats"></p>
+      </div>
+
+      <div class="panel points">
+        <h2>Pontuação</h2>
+        <p></p>
+      </div>
     </div>
-
-    <div class="panel">
-      <h1>Ameaças de Sequestro de Navegador</h1>
-      <p></p>
-    </div>
-
-    <div class="panel">
-      <h1>Local Storage</h1>
-      <p id="storage-stats"></p>
-    </div>
-
-    <div class="panel">
-      <h1>Cookies</h1>
-      <p id="cookie-stats"></p>
-    </div>
-
-    <div class="panel">
-      <h1>Pontuação</h1>
-      <p></p>
-    </div>
-
-    <ul id = "local-content"></ul>
-    <ul id="local-stats"></ul>
-
-    <button id="btn-update">Atualizar</button>
 
     <script src="tests_vuln.js"></script>
   </body>

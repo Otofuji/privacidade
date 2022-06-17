@@ -4,7 +4,7 @@ function getActiveTab() {
 
 function getTabTitle(tabs) {
   let tab = tabs.pop();
-  document.getElementById('header-title').textContent = tab.title;
+  document.getElementById('site-name').textContent = tab.title;
 }
 
 function cookiesForTab(tabs) {
@@ -38,13 +38,13 @@ function localStorageInfo(){
 }
 
 
-document.addEventListener("click", function(e) {
-  if (e.target.id === "btn-update") {
-    getActiveTab().then(getTabTitle);
-    getActiveTab().then(cookiesForTab);
-    localStorageInfo();
-  }
-});
+// document.addEventListener("click", function(e) {
+//   if (e.target.id === "btn-update") {
+//     getActiveTab().then(getTabTitle);
+//     getActiveTab().then(cookiesForTab);
+//     localStorageInfo();
+//   }
+// });
 
 getActiveTab().then(getTabTitle);
 getActiveTab().then(cookiesForTab);
