@@ -17,11 +17,15 @@
     },
 
     "permissions": [
-        "http://*/*",
-        "https://*/*",
         "tabs",
         "cookies",
-        "<all_urls>"
+        "storage",
+        "webNavigation",
+        "<all_urls>",
+        "webRequest",
+        "activeTab",
+        "contextualIdentities",
+        "privacy"
     ],
      
     "browser_action": {
@@ -31,9 +35,6 @@
     },
 
     "web_accessible_resources": [
-        "beasts/frog.jpg",
-        "beasts/turtle.jpg",
-        "beasts/snake.jpg"
     ]
 }
 

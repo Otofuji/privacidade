@@ -1,49 +1,62 @@
-function showCookiesForTab(tabs) {
+function getActiveTab() {
+  return browser.tabs.query({currentWindow: true, active: true});
+}
+
+function getTabTitle(tabs) {
+  let tab = tabs.pop();
+  document.getElementById('header-title').textContent = tab.title;
+}
+
+function cookiesForTab(tabs) {
   let tab = tabs.pop();
 
   var gettingAllCookies = browser.cookies.getAll({url: tab.url});
   gettingAllCookies.then((cookies) => {
-
-    var activeTabUrl = document.getElementById('header-title');
-    var text = document.createTextNode(tab.title);
     var cookieNumber = document.getElementById('cookie-stats');
-    activeTabUrl.appendChild(text);
-
 
     if (cookies.length > 0) {
-      cookieNumber.innerHTML = cookies.length;
+      cookieNumber.textContent = cookies.length;
     }
     else {
-      let content = document.createTextNode("No cookies in this tab.");
-      cookieNumber.appendChild(content);
+      cookieNumber.textContent = "No cookies";
+    }
+  });
+}
+
+function localStorageInfo(){
+  let a = document.getElementById('storage-stats');
+  a.textContent = "No local storage";
+
+  browser.tabs.executeScript({code: "(function (){return localStorage.length;})();"})
+  .then((result) => {
+    if (result[0] > 0) {
+      a.textContent = result[0];
+    } else {
+      a.textContent = "No local storage";
     }
   });
 }
 
 
-function localStorage(){
-  var getting = browser.storage.local.get();
-  getting.then((res) => {
-    // var localStorage = document.getElementById('local-storage');
-    var test = document.createTextNode("test");
-    var info = document.getElementById("storage-stats");
-    info.appendChild(test);
+document.addEventListener("click", function(e) {
+  if (e.target.id === "btn-update") {
+    getActiveTab().then(getTabTitle);
+    getActiveTab().then(cookiesForTab);
+    localStorageInfo();
   }
-  , (err) => {
-    console.log(err);
-  });
+});
 
-}
-
-
+getActiveTab().then(getTabTitle);
+getActiveTab().then(cookiesForTab);
+localStorageInfo();
 
 
 
-function getActiveTab() {
-  return browser.tabs.query({currentWindow: true, active: true});
-}
-getActiveTab().then(showCookiesForTab)
-getActiveTab().then(localStorage)
+
+
+
+
+
 
 // chrome.runtime.onMessage.addListener(beastify);
 
